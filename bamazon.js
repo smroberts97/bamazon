@@ -1,10 +1,10 @@
-drop database if exists Bamazon;
+drop database if exists bamazon;
 
-CREATE DATABASE Bamazon;
+CREATE DATABASE bamazon;
 
 
 
-USE Bamazon;
+USE bamazon;
 
 
 
@@ -28,4 +28,4 @@ Select * From products;
 
 
 insert into products(product_name, department_name, price, stock_quantity, product_sales)
-   value ("Iphone X", "Electronics", 999.99, 10, 5);
+   value ("Dumbo", "Plush", 19.99, 500, 25);

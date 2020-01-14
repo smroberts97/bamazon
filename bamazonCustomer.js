@@ -28,7 +28,7 @@ var connection = mysql.createConnection({
 
   // Password is empty string.
 
-  password: "Marine6226@@",
+  password: "root",
 
   database: "bamazon"
 
@@ -94,7 +94,7 @@ var requestProduct = function() {
 
 		type: "input",
 
-		message: "Please enter product ID for product you want.",
+		message: "Please enter product ID for product you would like to purchase.",
 
 		validate: function(value) {
 
@@ -113,7 +113,7 @@ var requestProduct = function() {
 
 		type: "input",
 
-		message: "How many units do you want?",
+		message: "How many would you like?",
 
 		validate: function(value) {
 

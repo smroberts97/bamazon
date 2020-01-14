@@ -27,5 +27,5 @@ CREATE TABLE products (
 Select * From products;
 
 
-insert into products(product_name, department_name, price, stock_quantity, product_sales)
-   value ("Dumbo", "Plush", 19.99, 500, 25);
+insert into products(product_name, department_name, price, stock_quantity)
+   value ("Dumbo", "Plush", 19.99, 500);

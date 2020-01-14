@@ -1,9 +1,3 @@
-// The customer module is part of bamazon.
-
-// Users can view a list of products in bamazon.
-
-// And select to purchase products.
-
 
 // Required node modules.
 
@@ -26,8 +20,6 @@ var connection = mysql.createConnection({
 
   user: "root",
 
-  // Password is empty string.
-
   password: "root",
 
   database: "bamazon"
@@ -35,7 +27,7 @@ var connection = mysql.createConnection({
 });
 
 
-// If connection doesn't work, throws error, else...
+// If connection doesn't work, throws error
 
 connection.connect(function(err) {
 
@@ -68,15 +60,9 @@ var displayProducts = function() {
               
             );
           
-            /*
-			console.log("Product ID: " + res[i].item_id + " || Product Name: " +
-						res[i].product_name + "|| Stock Quantity: " + res[i].stock_quantity
-                         +" || Price: " + res[i].price);
-            */
 		}
         console.log(table.toString());
-        //console.log("\n");
-		// Requests product and number of product items user wishes to purchase.
+
 
   		requestProduct();
 
@@ -84,7 +70,7 @@ var displayProducts = function() {
 
 };
 
-// Requests product and number of product items user wishes to purchase.
+// Requests product and number of product items
 
 var requestProduct = function() {
 
@@ -144,25 +130,21 @@ var requestProduct = function() {
 
 			var price_per_unit = res[0].price;
 
-			// Checks there's enough inventory  to process user's request.
+			// Checks enough inventory to process request.
 
 			if (available_stock >= answer.productUnits) {
 
-				// Processes user's request passing in data to complete purchase.
 
 				completePurchase(available_stock, price_per_unit, answer.productID, answer.productUnits);
 
 			} else {
 
 
-
-				// Tells user there isn't enough stock left.
                 console.log("\n");
 				console.log("Sorry, there isn't enough of that item in stock!");
 				console.log("\n");
 				displayProducts();
 
-				// Lets user request a new product.
 
 				requestProduct();
 			}
@@ -171,7 +153,6 @@ var requestProduct = function() {
 	});
 };
 
-// Completes user's request to purchase product.
 
 var completePurchase = function(availableStock, price, selectedProductID, selectedProductUnits) {
 
@@ -183,7 +164,7 @@ var completePurchase = function(availableStock, price, selectedProductID, select
 
 	var totalPrice = parseFloat(price * selectedProductUnits);
 
-	// Updates stock quantity on the database based on user's purchase.
+	// Updates stock quantity on the database
 
 	var query = "UPDATE products SET ? WHERE ?";
 
@@ -200,16 +181,14 @@ var completePurchase = function(availableStock, price, selectedProductID, select
 
 		if (err) throw err;
 
-		// Tells user purchase is a success.
+
         console.log("\n");
 		console.log("Congratulations!, your purchase is complete.");
 
-		// Display the total price for that purchase.
 
 		console.log("Thank you, the payment has been received in the amount of : " + totalPrice);
         console.log("\n");
         
-		// Displays products so user can make a new selection.
 
 	});
     displayProducts();
